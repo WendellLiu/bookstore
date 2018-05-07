@@ -9,11 +9,18 @@
   "plugins": [
     "prettier"
   ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
   "rules": {
     "prettier/prettier": [
       "error",
       {
-        "singleQuote": true
+        "singleQuote": true,
+        "trailingComma": "all"
       }
     ]
   }
