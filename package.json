@@ -4,5 +4,29 @@
   "description": "bookstore services",
   "main": "index.js",
   "repository": "https://github.com/WendellLiu/bookstore",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint ./"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "husky": "^1.0.0-rc.2",
+    "lint-staged": "^7.1.0",
+    "prettier": "^1.12.1"
+  }
 }
