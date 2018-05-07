@@ -25,7 +25,21 @@ const getUsers = (req, res) => {
     });
 };
 
+const deleteUser = (req, res) => {
+  const { userId } = req.params;
+  userModel
+    .deleteItem(userId)
+    .then(r => {
+      res.send('success');
+    })
+    .catch(e => {
+      console.log(e);
+      throw e;
+    });
+};
+
 module.exports = {
   postUser,
   getUsers,
+  deleteUser,
 };
