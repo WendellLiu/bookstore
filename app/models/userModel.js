@@ -4,12 +4,23 @@ const { compose } = require('ramda');
 const database = require('../database');
 
 const User = database.define('user', {
-  name: Sequelize.STRING,
-  gender: Sequelize.INTEGER,
-  email: Sequelize.STRING,
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  gender: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
 });
 
-const createUser = compose(User.create);
+const createUser = args => User.create(args);
+
+User.sync({ alter: true });
 
 module.exports = {
   createItem: createUser,
