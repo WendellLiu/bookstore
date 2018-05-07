@@ -19,9 +19,11 @@ const User = database.define('user', {
 });
 
 const createUser = args => User.create(args);
+const getUsers = () => User.findAll();
 
-User.sync({ alter: true });
+User.sync();
 
 module.exports = {
   createItem: createUser,
+  getItems: getUsers,
 };
