@@ -9,9 +9,9 @@ const Book = database.define('book', {
 
 const book = Book.sync();
 
-const bookMethods = {
+const bookModel = {
+  getBookList: () => Book.findAll(),
   createBook: bookConfig => book.then(() => Book.create(bookConfig)),
-  findAllBooks: () => Book.findAll(),
 };
 
-module.exports = bookMethods;
+module.exports = bookModel;
