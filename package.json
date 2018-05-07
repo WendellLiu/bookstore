@@ -1,0 +1,8 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "bookstore services",
+  "main": "index.js",
+  "repository": "https://github.com/WendellLiu/bookstore",
+  "license": "MIT"
+}
