@@ -2,7 +2,7 @@ const userModel = require('../../models/userModel');
 const { userView, listUserView } = require('./view');
 const { successResp } = require('../../shared/responseView');
 
-const postUser = (req, res, next) => {
+const postUser = (req, res, next) =>
   userModel
     .createItem(req.body)
     .then(r => {
@@ -10,11 +10,10 @@ const postUser = (req, res, next) => {
     })
     .catch(e => {
       console.log(e);
-      next();
+      next(e);
     });
-};
 
-const getUsers = (req, res, next) => {
+const getUsers = (req, res, next) =>
   userModel
     .getItems()
     .then(r => {
@@ -22,20 +21,19 @@ const getUsers = (req, res, next) => {
     })
     .catch(e => {
       console.log(e);
-      next();
+      next(e);
     });
-};
 
 const deleteUser = (req, res, next) => {
   const { userId } = req.params;
-  userModel
+  return userModel
     .deleteItem(userId)
     .then(r => {
       res.send(successResp());
     })
     .catch(e => {
       console.log(e);
-      next();
+      next(e);
     });
 };
 

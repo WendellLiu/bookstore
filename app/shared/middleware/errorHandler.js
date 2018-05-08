@@ -1,8 +1,5 @@
-const { errorResp } = require('./errorHandler');
+const { errorResp } = require('../responseView');
 
-const errorHandler = (err, req, res, next) => {
-  console.log('errorHandler', err);
-  res.status(500).send(errorResp());
-};
+const errorHandler = (err, req, res, next) => res.status(500).send(errorResp());
 
 module.exports = errorHandler;
