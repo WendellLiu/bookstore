@@ -12,6 +12,12 @@ const book = Book.sync();
 const bookModel = {
   getBookList: () => Book.findAll(),
   createBook: bookConfig => book.then(() => Book.create(bookConfig)),
+  removeBook: id =>
+    Book.destroy({
+      where: {
+        id,
+      },
+    }),
 };
 
 module.exports = bookModel;
