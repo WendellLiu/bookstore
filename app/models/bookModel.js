@@ -2,16 +2,22 @@ var Sequelize = require('sequelize');
 var database = require('../database');
 
 const Book = database.define('book', {
-  title: Sequelize.STRING,
-  description: Sequelize.TEXT,
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  description: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+  },
   // publish_date: Sequelize.DATE,
 });
 
-const book = Book.sync();
+Book.sync();
 
 const bookModel = {
   getBookList: () => Book.findAll(),
-  createBook: bookConfig => book.then(() => Book.create(bookConfig)),
+  createBook: bookArgs => Book.create(bookArgs),
   removeBook: id =>
     Book.destroy({
       where: {
