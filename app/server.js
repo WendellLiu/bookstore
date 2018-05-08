@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const chalk = require('chalk');
 const morgan = require('morgan');
+const compression = require('compression');
 
 const { PORT, MYSQL_PORT } = require('../config');
 const errorHandler = require('./shared/middleware/errorHandler');
@@ -13,6 +14,7 @@ const app = express();
 app.use(
   morgan(':method :url :status :res[content-length] - :response-time ms'),
 );
+app.use(compression());
 app.use(bodyParser.json());
 app.use('/api', router);
 app.use(errorHandler);
