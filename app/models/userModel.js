@@ -20,9 +20,17 @@ const User = database.define('user', {
 
 const createUser = args => User.create(args);
 const getUsers = () => User.findAll();
+const getUser = id => User.findById(id);
 const deleteUser = id =>
   User.destroy({
     where: { id },
+  });
+
+const updateUser = id => value =>
+  User.update(value, {
+    where: {
+      id,
+    },
   });
 
 User.sync();
@@ -30,5 +38,7 @@ User.sync();
 module.exports = {
   createItem: createUser,
   getItems: getUsers,
+  getItem: getUser,
   deleteItem: deleteUser,
+  updateItem: updateUser,
 };
