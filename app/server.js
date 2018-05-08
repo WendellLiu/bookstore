@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const morgan = require('morgan');
 
 const { PORT, MYSQL_PORT } = require('../config');
+const errorHandler = require('./shared/middleware/errorHandler');
 
 const router = require('./router');
 
@@ -14,6 +15,7 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use('/api', router);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(chalk.green(`app listening on port ${PORT}!`));
