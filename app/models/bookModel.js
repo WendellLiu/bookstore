@@ -18,6 +18,12 @@ const bookModel = {
         id,
       },
     }),
+  updateBook: (id, updatedObj) =>
+    Book.update(updatedObj, {
+      where: {
+        id,
+      },
+    }),
 };
 
 module.exports = bookModel;
