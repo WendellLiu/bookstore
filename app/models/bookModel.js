@@ -10,7 +10,11 @@ const Book = database.define('book', {
     type: Sequelize.TEXT,
     allowNull: false,
   },
-  // publish_date: Sequelize.DATE,
+  // YYYY-MM-DD
+  publish_date: {
+    type: Sequelize.DATE,
+    allowNull: false,
+  },
 });
 
 Book.sync();
