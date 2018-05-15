@@ -36,4 +36,7 @@ const bookModel = {
     }),
 };
 
-module.exports = bookModel;
+module.exports = {
+  ...bookModel,
+  Book,
+};

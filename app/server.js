@@ -19,6 +19,9 @@ app.use(bodyParser.json());
 app.use('/api', router);
 app.use(errorHandler);
 
+//加载主外键关系及创建数据库
+require('./ref');
+
 app.listen(PORT, () => {
   console.log(chalk.green(`app listening on port ${PORT}!`));
   console.log(chalk.green(`mysql listening on port ${MYSQL_PORT}!\n`));

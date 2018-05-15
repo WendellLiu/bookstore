@@ -41,4 +41,5 @@ module.exports = {
   getItem: getUser,
   deleteItem: deleteUser,
   updateItem: updateUser,
+  User,
 };
