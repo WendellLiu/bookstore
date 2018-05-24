@@ -1,27 +1,31 @@
 var Sequelize = require('sequelize');
 var database = require('../database');
 
-const History = database.define('history', {
-  bookingReason: {
-    type: Sequelize.TEXT,
-    allowNull: false,
+const History = database.define(
+  'history',
+  {
+    booking_reason: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    },
+    user_uuid: {
+      type: Sequelize.UUID,
+      allowNull: false,
+    },
+    book_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
   },
-  userId: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  bookId: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-});
+  { underscored: true },
+);
 
 History.sync();
 
 const historyModel = {
   getHistoryList: () => History.findAll(),
-  createHistory: ({ bookingReason, userId, bookId }) =>
-    History.create({ bookingReason, userId, bookId }),
+  createHistory: ({ booking_reason, user_uuid, book_id }) =>
+    History.create({ booking_reason, user_uuid, book_id }),
   removeHistory: id =>
     History.destroy({
       where: {

@@ -3,20 +3,30 @@ const { compose } = require('ramda');
 
 const database = require('../database');
 
-const User = database.define('user', {
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false,
+const User = database.define(
+  'user',
+  {
+    uuid: {
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV1,
+      allowNull: false,
+      unique: true,
+    },
+    name: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    gender: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
   },
-  gender: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-});
+  { underscored: true },
+);
 
 const createUser = args => User.create(args);
 const getUsers = () => User.findAll();
