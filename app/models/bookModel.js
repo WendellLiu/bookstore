@@ -1,21 +1,25 @@
 var Sequelize = require('sequelize');
 var database = require('../database');
 
-const Book = database.define('book', {
-  title: {
-    type: Sequelize.STRING,
-    allowNull: false,
+const Book = database.define(
+  'book',
+  {
+    title: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    },
+    // YYYY-MM-DD
+    publish_date: {
+      type: Sequelize.DATE,
+      allowNull: false,
+    },
   },
-  description: {
-    type: Sequelize.TEXT,
-    allowNull: false,
-  },
-  // YYYY-MM-DD
-  publish_date: {
-    type: Sequelize.DATE,
-    allowNull: false,
-  },
-});
+  { underscored: true },
+);
 
 Book.sync();
 
@@ -36,4 +40,7 @@ const bookModel = {
     }),
 };
 
-module.exports = bookModel;
+module.exports = {
+  ...bookModel,
+  Book,
+};
