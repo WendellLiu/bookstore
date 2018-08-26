@@ -16,6 +16,12 @@ app.use(
 );
 app.use(compression());
 app.use(bodyParser.json());
+
+// Handle CORS request
+app.all('/api/books', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  next();
+});
 app.use('/api', router);
 app.use(errorHandler);
 
